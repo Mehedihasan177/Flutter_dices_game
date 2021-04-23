@@ -15,14 +15,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final random = Random.secure();
   var index = 0, hot = 0, add = 0, sum = 0;
-  // final dices = [
-  //   'images/d1.png',
-  //   'images/d2.png',
-  //   'images/d3.png',
-  //   'images/d4.png',
-  //   'images/d5.png',
-  //   'images/d6.png',
-  // ];
+  final dices = [
+    'images/d1.png',
+    'images/d2.png',
+    'images/d3.png',
+    'images/d4.png',
+    'images/d5.png',
+    'images/d6.png',
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Image.asset(
-                    'images/d$index',
+                    dices[index],
                     height: 100,
                     width: 100,
                     fit: BoxFit.cover,
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
                     width: 20,
                   ),
                   Image.asset(
-                    'images/d$hot',
+                    dices[hot],
                     height: 100,
                     width: 100,
                     fit: BoxFit.cover,
@@ -62,10 +62,10 @@ class _MyAppState extends State<MyApp> {
                   child: Text("Roll"),
                   onPressed: () {
                     setState(() {
-                      index = random.nextInt(6) + 1;
-                      hot = random.nextInt(6) + 1;
+                      index = random.nextInt(6);
+                      hot = random.nextInt(6);
 
-                      add = (index) + (hot);
+                      add = (index + 1) + (hot + 1);
 
                       if (add == 7) {
                         print("ses");
